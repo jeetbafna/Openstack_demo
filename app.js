@@ -48,11 +48,7 @@ keystone.getToken('admin', 'a10ac0db07954235', function(error, token){
   else
   {
     console.log('A general token object has been retrived', token);
-    global.token1 = token;
-    //the token value (token.token) is required for project listing & getting project specific tokens
-  }
-});
-keystone.listProjects('admin', token1, function(error, projects_array){
+    keystone.listProjects('admin', token, function(error, projects_array){
   if(error)
   {
     console.log('an error occured', error);
@@ -63,4 +59,8 @@ keystone.listProjects('admin', token1, function(error, projects_array){
     //projects_array[n].id is required for many other calls and to generate a project specific token
   }
 });
+    //the token value (token.token) is required for project listing & getting project specific tokens
+  }
+});
+
 module.exports = app;
