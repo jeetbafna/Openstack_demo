@@ -50,7 +50,7 @@ keystone.getToken('admin', 'a10ac0db07954235', function(error, token){
     console.log('A general token object has been retrived', token);
     global.token1=token.token;
     console.log(token1);
-    keystone.listProjects(token1, function(error, projects_array){
+    keystone.listProjects('admin', function(error, projects_array){
   if(error)
   {
     console.log('an error occured', error);
