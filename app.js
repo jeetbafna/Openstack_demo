@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var OSWrap = require('openstack-wrapper');
-var keystone = new OSWrap.Keystone('http://192.168.1.51:5000');
+var keystone = new OSWrap.Keystone('http://192.168.1.51:5000/v3');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -55,16 +55,16 @@ keystone.getToken('admin', 'a10ac0db07954235', function(error, token){
   }
 });
 
-keystone.listProjects('admin','a10ac0db07954235', token1, function(error, projects_array){
-  if(error)
-  {
-    console.log('an error occured', error);
-  }
-  else
-  {
-    console.log('A list of projects was retrived', projects_array);
-    //projects_array[n].id is required for many other calls and to generate a project specific token
-  }
-});
+// keystone.listProjects('admin','a10ac0db07954235', token1, function(error, projects_array){
+//   if(error)
+//   {
+//     console.log('an error occured', error);
+//   }
+//   else
+//   {
+//     console.log('A list of projects was retrived', projects_array);
+//     //projects_array[n].id is required for many other calls and to generate a project specific token
+//   }
+// });
 
 module.exports = app;
